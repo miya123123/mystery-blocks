@@ -1,131 +1,146 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: 'Arial', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
 }
 
 h1 {
-  margin-bottom: 20px;
-  color: #333;
+    color: #333;
 }
 
 .game-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: inline-block;
+    margin: 20px auto;
 }
 
-.game-board {
-  display: grid;
-  grid-template-columns: repeat(10, 30px);
-  grid-template-rows: repeat(20, 30px);
-  gap: 1px;
-  border: 2px solid #333;
-  background-color: #222;
+#game-board {
+    border: 2px solid #333;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: relative;
 }
 
 .cell {
-  width: 30px;
-  height: 30px;
-  background-color: #000;
-}
-
-.cell.filled {
-  background-color: #f0f0f0;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+    position: absolute;
 }
 
 .controls {
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
+    margin-top: 20px;
 }
 
 button {
-  padding: 10px 15px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
+    padding: 10px 15px;
+    margin: 0 5px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 button:hover {
-  background-color: #45a049;
+    background-color: #45a049;
 }
 
-.score-display {
-  margin-top: 10px;
-  font-size: 20px;
+#score-display {
+    font-size: 24px;
+    margin-top: 10px;
 }
 
-.game-over {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  z-index: 10;
-}
-
-.hidden {
-  display: none;
-}
-
-.next-piece-display {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(4, 20px);
-  grid-template-rows: repeat(4, 20px);
-  gap: 1px;
-  border: 1px solid #333;
-}
-
-.next-cell {
-  width: 20px;
-  height: 20px;
-  background-color: #000;
-}
-
-.next-cell.filled {
-  background-color: #f0f0f0;
-}
-
-.tetromino-I { background-color: cyan; }
-.tetromino-O { background-color: yellow; }
-.tetromino-T { background-color: purple; }
-.tetromino-S { background-color: green; }
-.tetromino-Z { background-color: red; }
-.tetromino-J { background-color: blue; }
-.tetromino-L { background-color: orange; }
-
+/* ブロックの色 */
+.block-I { background-color: cyan; }
+.block-O { background-color: yellow; }
+.block-T { background-color: purple; }
+.block-S { background-color: green; }
+.block-Z { background-color: red; }
+.block-J { background-color: blue; }
+.block-L { background-color: orange; }
 .mystery-block { 
-  background-color: black; 
-  border: 2px dashed white;
+    background-color: black; 
+    border: 2px dashed white;
 }
 
-@media (max-width: 600px) {
-  .game-board {
-    grid-template-columns: repeat(10, 25px);
-    grid-template-rows: repeat(20, 25px);
-  }
+/* 次のブロック表示エリア */
+#next-piece-container {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 2px solid #333;
+    border-radius: 5px;
+}
 
-  .cell {
-    width: 25px;
-    height: 25px;
-  }
+#next-piece-title {
+    color: white;
+    margin-bottom: 10px;
+}
+
+#next-piece-display {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+/* ゲームオーバー表示 */
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 10;
+    display: none;
+}
+
+/* モバイル対応 */
+@media (max-width: 600px) {
+    .cell {
+        width: 25px;
+        height: 25px;
+    }
+    
+    #next-piece-container {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
+
+/* 説明部分のスタイル */
+.instructions {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: left;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.instructions h2 {
+    color: #333;
+    margin-top: 0;
+}
+
+.instructions ul {
+    padding-left: 20px;
+}
+
+.instructions li {
+    margin-bottom: 5px;
+}
+
+/* レベル表示 */
+#level-display {
+    font-size: 20px;
+    margin-top: 10px;
 }
