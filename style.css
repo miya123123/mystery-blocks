@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+  grid-template-rows: repeat(20, 30px);
+  gap: 1px;
+  border: 2px solid #333;
+  background-color: #222;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  background-color: #000;
+}
+
+.cell.filled {
+  background-color: #f0f0f0;
+}
+
+.controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.score-display {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
+}
+
+.next-piece-display {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 20px);
+  grid-template-rows: repeat(4, 20px);
+  gap: 1px;
+  border: 1px solid #333;
+}
+
+.next-cell {
+  width: 20px;
+  height: 20px;
+  background-color: #000;
+}
+
+.next-cell.filled {
+  background-color: #f0f0f0;
+}
+
+.tetromino-I { background-color: cyan; }
+.tetromino-O { background-color: yellow; }
+.tetromino-T { background-color: purple; }
+.tetromino-S { background-color: green; }
+.tetromino-Z { background-color: red; }
+.tetromino-J { background-color: blue; }
+.tetromino-L { background-color: orange; }
+
+.mystery-block { 
+  background-color: black; 
+  border: 2px dashed white;
+}
+
+@media (max-width: 600px) {
+  .game-board {
+    grid-template-columns: repeat(10, 25px);
+    grid-template-rows: repeat(20, 25px);
+  }
+
+  .cell {
+    width: 25px;
+    height: 25px;
+  }
+}
